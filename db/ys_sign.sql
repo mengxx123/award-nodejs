@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `tb_award`
+--
+
+DROP TABLE IF EXISTS `tb_award`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_award` (
+  `id` varchar(40) NOT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `user_name` varchar(45) DEFAULT NULL,
+  `activity_id` varchar(45) DEFAULT NULL,
+  `content` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_award`
+--
+
+LOCK TABLES `tb_award` WRITE;
+/*!40000 ALTER TABLE `tb_award` DISABLE KEYS */;
+INSERT INTO `tb_award` VALUES ('1511339220598','15602221234','陈建行','1','1');
+/*!40000 ALTER TABLE `tb_award` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_user`
 --
 
@@ -27,6 +54,7 @@ CREATE TABLE `tb_user` (
   `user_name` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `industry` varchar(45) DEFAULT NULL,
+  `activity_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='签到用户';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +65,7 @@ CREATE TABLE `tb_user` (
 
 LOCK TABLES `tb_user` WRITE;
 /*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
-INSERT INTO `tb_user` VALUES ('1','陈建杭','15602221034','互联网'),('1511251410256','张三','15602221234','互联网'),('1511252199608','张三','15602221234','互联网'),('1511256546097','张三','15602221234','互联网'),('1511256833689','张三','15602221234','互联网'),('1511257147627','张三','15602221234','互联网');
+INSERT INTO `tb_user` VALUES ('1511339219068','陈建行','15602221234','互联网','1');
 /*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-21 17:52:37
+-- Dump completed on 2017-11-22 18:21:00
