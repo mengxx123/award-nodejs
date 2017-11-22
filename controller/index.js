@@ -5,6 +5,7 @@ var goodlist = require('../model/goodlist.js')
 const category = require('../model/category')
 const address = require('../model/address')
 const user = require('../model/user')
+const award = require('../model/award')
 const cart = require('../model/cart')
 
 /* GET home page. */
@@ -27,6 +28,22 @@ router.get('/users', function(req, res, next) {
 
 router.post('/users', function(req, res, next) {
     user.add(req, res, next)
+})
+
+router.delete('/users', function(req, res, next) {
+    user.deleteAll(req, res, next)
+})
+
+router.get('/awards', function(req, res, next) {
+    award.getAll(req, res, next)
+})
+
+router.post('/awards', function(req, res, next) {
+    award.add(req, res, next)
+})
+
+router.delete('/awards', function(req, res, next) {
+    award.deleteAll(req, res, next)
 })
 
 router.get('/banners',function(req,res,next){
