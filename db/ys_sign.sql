@@ -16,6 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `tb_activity`
+--
+
+DROP TABLE IF EXISTS `tb_activity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_activity` (
+  `id` varchar(45) NOT NULL,
+  `name` varchar(45) DEFAULT NULL COMMENT '活动名称',
+  `type` int(11) DEFAULT NULL COMMENT '活动类型',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='活动';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_activity`
+--
+
+LOCK TABLES `tb_activity` WRITE;
+/*!40000 ALTER TABLE `tb_activity` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_activity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_award`
 --
 
@@ -38,7 +62,7 @@ CREATE TABLE `tb_award` (
 
 LOCK TABLES `tb_award` WRITE;
 /*!40000 ALTER TABLE `tb_award` DISABLE KEYS */;
-INSERT INTO `tb_award` VALUES ('1511339220598','15602221234','陈建行','1','1');
+INSERT INTO `tb_award` VALUES ('1511400681046','15602221234','陈建行','1','1');
 /*!40000 ALTER TABLE `tb_award` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +89,7 @@ CREATE TABLE `tb_user` (
 
 LOCK TABLES `tb_user` WRITE;
 /*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
-INSERT INTO `tb_user` VALUES ('1511339219068','陈建行','15602221234','互联网','1');
+INSERT INTO `tb_user` VALUES ('1511400677510','陈建行','15602221234','互联网','1'),('1511403172402','陈建行','15602221204','互联网','1');
 /*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -78,4 +102,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-22 18:21:00
+-- Dump completed on 2017-11-23 14:11:46

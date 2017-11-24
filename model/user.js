@@ -1,3 +1,5 @@
+const db = require('./db')
+
 //实现与mysql交互
 var mysql = require('mysql');
 var $conf = require('../conf/db.js');
@@ -18,25 +20,57 @@ var jsonWrite = function (res, ret) {
     }
 };
 
+function generateUUID() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+};
+
 module.exports = {
     getAll: function (req, res, next) {
-        pool.getConnection(function (err, connection) {
-            connection.query(sql.getAll, function (err, result) {
-                jsonWrite(res, {
-                    code: 0,
-                    msg: '',
-                    data: result
+        db.query(sql.getAll)
+            .then(result => {
+                    res.json({
+                        code: 0,
+                        msg: '',
+                        data: result
+                    })
+                },
+                err => {
+                    res.json({
+                        code: 500,
+                        msg: '',
+                        data: err
+                    })
                 })
-                connection.release()
-            })
-        })
     },
     add: function (req, res, next) {
-        pool.getConnection(function(err, connection) {
-            let body = req.body
-            // 防止重复签到
+        try {
             pool.getConnection(function(err, connection) {
+                if (err) {
+                    jsonWrite(res, {
+                        code: 34,
+                        msg: '系统错误'
+                    })
+                    connection.release();
+                    return
+                }
+
+                let body = req.body
+                // 防止重复签到
                 connection.query(sql.getByPhone, body.phone, function(err, result) {
+                    if (err) {
+                        jsonWrite(res, {
+                            code: 33,
+                            msg: '系统错误'
+                        })
+                        connection.release();
+                        return
+                    }
                     if (result.length) {
                         jsonWrite(res, {
                             code: 2,
@@ -46,6 +80,7 @@ module.exports = {
                         return
                     }
 
+                    console.log('插入')
                     // 建立连接，向表中插入值
                     let id = '' + new Date().getTime()
                     connection.query(sql.insert, [id, body.user_name, body.phone, body.industry, '1'], function(err, result) {
@@ -61,12 +96,17 @@ module.exports = {
                             });
                         }
 
+                        console.log('释放')
                         // 释放连接
                         connection.release();
                     });
                 });
             });
-        });
+        } catch (err) {
+            console.log('出错了')
+            console.log(err)
+        }
+
     },
     deleteAll: function (req, res, next) {
         pool.getConnection(function (err, connection) {

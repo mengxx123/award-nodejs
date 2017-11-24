@@ -1,12 +1,36 @@
 // conf/db.js
 // MySQL数据库联接配置
-module.exports = {
-    mysql: {
-        host: 'localhost', 
+
+let env = process.env.NODE_ENV || 'production'
+env = env.toLowerCase()
+console.log('Load config: [%s]', env)
+
+let mysql
+let apiDomain
+
+if (process.env.NODE_ENV === 'production') {
+    mysql = {
+        debug: true,
+        host: 'localhost',
         user: 'root',
         password: 'Yunser123-',
-        database:'ys_sign', // 前面建的user表位于些数据库中
-        port: 3306,
-        debug: true
+        database:'ys_sign',
+        port: 3306
     }
-};
+    apiDomain = 'http://120.78.177.9:3000'
+} else {
+    mysql = {
+        debug: true,
+        host: 'localhost',
+        user: 'root',
+        password: '123456',
+        database:'ys_sign',
+        port: 3306
+    }
+    apiDomain = 'http://localhost:3000'
+}
+
+module.exports = {
+    apiDomain,
+    mysql
+}
