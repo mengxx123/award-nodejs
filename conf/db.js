@@ -3,6 +3,7 @@
 
 let env = process.env.NODE_ENV || 'production'
 env = env.toLowerCase()
+console.log('process.env.NODE_ENV: ' + process.env.NODE_ENV)
 console.log('Load config: [%s]', env)
 
 let mysql
