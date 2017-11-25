@@ -32,5 +32,5 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
     mysql,
-    NODE_ENV
+    NODE_ENV: NODE_ENV
 }

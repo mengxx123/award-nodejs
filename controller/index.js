@@ -28,7 +28,6 @@ router.get('/info', function(req, res, next) {
         code: '1',
         msg: '调试信息',
         data: {
-            NODE_ENV: process.env.NODE_ENV,
             config: config
         }
     })
