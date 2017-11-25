@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+const config = require('../conf/db.js')
 
 const user = require('../model/user')
 const award = require('../model/award')
@@ -19,6 +20,17 @@ router.get('/count', function(req, res, next) {
 router.get('/err', function(req, res, next) {
     undefinedFunction()
     res.send('这是测试数据' + i)
+})
+
+// 调试信息
+router.get('/info', function(req, res, next) {
+    res.json({
+        code: '1',
+        msg: '',
+        data: {
+            config: config
+        }
+    })
 })
 
 router.get('/about', function(req, res, next) {
