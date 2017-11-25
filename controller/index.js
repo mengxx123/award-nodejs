@@ -26,7 +26,7 @@ router.get('/err', function(req, res, next) {
 router.get('/info', function(req, res, next) {
     res.json({
         code: '1',
-        msg: '',
+        msg: '调试信息',
         data: {
             NODE_ENV: process.env.NODE_ENV,
             config: config
