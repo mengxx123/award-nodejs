@@ -76,7 +76,7 @@ module.exports = {
                         console.log(count)
                         // 处理抽奖逻辑
                         let award = false
-                        if (body.phone === '15602221234') {
+                        if (body.phone === '15602221234' || body.phone === '15603696610') {
                             // 方便调试
                             award = true
                         } else if (count >= 10 && awardCount === 0) {
