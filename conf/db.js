@@ -10,21 +10,21 @@ let mysql
 let NODE_ENV = process.env.NODE_ENV
 // process.env.NODE_ENV = 'production'
 
-if (process.env.NODE_ENV === 'production') {
-    mysql = {
-        debug: false,
-        host: '120.78.177.9',
-        user: 'root',
-        password: 'Yunser123-',
-        database:'ys_sign',
-        port: 3306
-    }
-} else {
+if (process.env.NODE_ENV === 'development') {
     mysql = {
         debug: true,
         host: 'localhost',
         user: 'root',
         password: '123456',
+        database:'ys_sign',
+        port: 3306
+    }
+} else {
+    mysql = {
+        debug: false,
+        host: '120.78.177.9',
+        user: 'root',
+        password: 'Yunser123-',
         database:'ys_sign',
         port: 3306
     }
