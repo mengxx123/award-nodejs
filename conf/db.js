@@ -7,18 +7,16 @@ console.log('process.env.NODE_ENV: ' + process.env.NODE_ENV)
 console.log('Load config: [%s]', env)
 
 let mysql
-let apiDomain
 
 if (process.env.NODE_ENV === 'production') {
     mysql = {
         debug: true,
-        host: 'localhost',
+        host: '120.78.177.9',
         user: 'root',
         password: 'Yunser123-',
         database:'ys_sign',
         port: 3306
     }
-    apiDomain = 'http://120.78.177.9:3000'
 } else {
     mysql = {
         debug: true,
@@ -28,10 +26,8 @@ if (process.env.NODE_ENV === 'production') {
         database:'ys_sign',
         port: 3306
     }
-    apiDomain = 'http://localhost:3000'
 }
 
 module.exports = {
-    apiDomain,
     mysql
 }
