@@ -7,12 +7,12 @@ console.log('process.env.NODE_ENV: ' + process.env.NODE_ENV)
 console.log('Load config: [%s]', env)
 
 let mysql
-
+let NODE_ENV = process.env.NODE_ENV
 // process.env.NODE_ENV = 'production'
 
 if (process.env.NODE_ENV === 'production') {
     mysql = {
-        debug: true,
+        debug: false,
         host: '120.78.177.9',
         user: 'root',
         password: 'Yunser123-',
@@ -31,5 +31,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-    mysql
+    mysql,
+    NODE_ENV
 }

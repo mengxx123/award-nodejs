@@ -28,6 +28,7 @@ router.get('/info', function(req, res, next) {
         code: '1',
         msg: '',
         data: {
+            NODE_ENV: process.env.NODE_ENV,
             config: config
         }
     })
