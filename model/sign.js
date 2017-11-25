@@ -1,12 +1,10 @@
 const db = require('./db')
 const Sequelize = require('sequelize')
-const Op = Sequelize.Op
 
 var config = require('../conf/db.js')
 
-console.log(config.database, config.user, config.password)
-var sequelize = new Sequelize('ys_sign', 'root', '123456', {
-    host: 'localhost',
+var sequelize = new Sequelize(config.database, config.user, config.password, {
+    host: config.host,
     dialect: 'mysql',
     pool: {
         max: 5,
